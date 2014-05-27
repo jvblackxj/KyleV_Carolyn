@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Judge Carolyn Ellsworth - District Court Dept. 5</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="css/foundation.css">
+</head>
+<body>
+<div class="main">
+<!-- Nav Bar -->
+    <div class="row">
+        <div class="large-12 columns">
+            <img src="img/carolyn_header.jpg" align="center" name="top" /><br/><br/>
+        </div>
+    </div>
+<!-- End Nav -->
+ 
+<!-- Main Page Content and Sidebar -->
+    <div class="row">
+      
+    <!-- Sidebar -->
+        <aside class="large-3 columns">
+            <ul class="side-nav sidebar">
+                <li><a href="index.html">Welcome</a></li>
+                <li><a href="experience.html">Experience</a></li>
+                <li><a href="bio.html">Bio</a></li>
+                <li><a href="endorsements.html">Endorsements</a></li>
+                <li><a href="volunteer.html">Volunteer</a></li>
+                <li><a href="contributions.html">Contributions</a></li>
+                <li><strong>Contact Us</strong></li>
+            </ul>
+ 
+            <div class="panel">
+                <a href="https://www.paypal.com/us/cgi-bin/webscr?cmd=_flow&SESSION=QIWtRpce9TM2w-uiwiSf2Cb8IvTJb6kr3R03bwOTgE0Z_unCkJUE8s5ZwiK&dispatch=5885d80a13c0db1f8e263663d3faee8d6cdb53fcfca2b5941339e576d7e42259">
+                    <img src="img/paypal.png" />
+                </a>
+            </div>
+        </aside>
+    <!-- End Sidebar -->
+      
+    <!-- Main Content -->
+        <div class="large-9 columns text" role="content">
+            <div class="row">
+                <div class="large-12 columns">
+                    <div class="row">
+                        <div class="large-12 columns" align="center">
+                            <p>P.O. Drawer 2070<br />
+                            Las Vegas, NV 89125-2070<br />
+                            Email: <a href="mailto:cellsworth2000@yahoo.com">cellsworth2000@yahoo.com</a></p>
+                        </div>
+                    </div>
+                    <form method="POST" name="contactform" action="contact_email.php">
+                        <div class="row">
+                            <div class="large-12 columns">
+                                <div class="row">
+                                    <div class="large-4 columns">
+                                        <label for='name' class="right inline">Name:</label>
+                                    </div>
+                                    <div class="large-8 columns">
+                                        <input type="text" name="name">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="large-4 columns">
+                                        <label for='address' class="right inline">Address:</label>
+                                    </div>
+                                    <div class="large-8 columns">
+                                        <textarea name="address"></textarea>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="large-4 columns">
+                                        <label for='city' class="right inline">City:</label>
+                                    </div>
+                                    <div class="large-8 columns">
+                                        <input type="text" name="city">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="large-4 columns">
+                                        <label for='state' class="right inline">State:</label>
+                                    </div>
+                                    <div class="large-8 columns">
+                                        <input type="text" name="state">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="large-4 columns">
+                                        <label for='zip' class="right inline">Zip:</label>
+                                    </div>
+                                    <div class="large-8 columns">
+                                        <input type="text" name="zip">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="large-4 columns">
+                                        <label for='phone' class="right inline">Phone Number:</label>
+                                    </div>
+                                    <div class="large-8 columns">
+                                        <input type="text" name="phone1" size="4" maxlength="3"> - 
+                                        <input type="text" name="phone2" size="4" maxlength="3"> - 
+                                        <input type="text" name="phone3" size="5" maxlength="4">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="large-4 columns">
+                                        <label for='fax' class="right inline">Fax Number <i>(optional)</i>:</label>
+                                    </div>
+                                    <div class="large-8 columns">
+                                        <input type="text" name="fax1" size="4" maxlength="3"> - 
+                                        <input type="text" name="fax2" size="4" maxlength="3"> - 
+                                        <input type="text" name="fax3" size="5" maxlength="4">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="large-4 columns">
+                                        <label for='email' class="right inline">Email Address:</label>
+                                    </div>
+                                    <div class="large-8 columns">
+                                        <input type="text" name="email">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="large-4 columns">
+                                        <label for='info' class="right inline">Message:</label>
+                                    </div>
+                                    <div class="large-8 columns">
+                                        <textarea rows="3" cols="30" name="info"></textarea>
+                                    </div>
+                                </div>
+                                <br /><br />
+                                <div class="row">
+                                    <div class="large-8 large-offset-4 columns">
+                                            <input class="button" type="submit" value="Submit">
+                                    </div>
+                                </div>
+                        <br />
+                    </form>
+                    <script type="text/javascript">
+                     var frmvalidator  = new Validator("volunteerform");
+                     
+                     frmvalidator.addValidation("name", "req", "Please enter your name");
+                     frmvalidator.addValidation("name", "maxlen=64", "Max characters for name is 64");
+                     frmvalidator.addValidation("name", "alpha_s", "Please use only alphabetic characters for name");
+                     
+                     frmvalidator.addValidation("address", "req", "Please enter your address");
+                     frmvalidator.addValidation("address", "maxlen=200", "Max characters for address is 200");
+                     
+                     frmvalidator.addValidation("city", "req", "Please enter your city");
+                     frmvalidator.addValidation("city", "maxlen=32", "Max characters for city is 32");
+                     frmvalidator.addValidation("city", "alpha_s", "Please use only alphabetic characters for city");
+                     
+                     frmvalidator.addValidation("state", "req", "Please enter your state");
+                     frmvalidator.addValidation("state", "maxlen=32", "Max characters for state is 32");
+                     frmvalidator.addValidation("state", "alpha_s", "Please use only alphabetic characters for state");
+                     
+                     frmvalidator.addValidation("zip", "req", "Please enter your zip code");
+                     frmvalidator.addValidation("zip", "num", "Please use only numeric characters for zip code");
+                     
+                     frmvalidator.addValidation("phone1", "req", "Please enter your home phone number");
+                     frmvalidator.addValidation("phone1", "num", "Please use only numeric characters for phone number");
+                     frmvalidator.addValidation("phone1", "minlen=3", "Please enter your home phone number");
+                     frmvalidator.addValidation("phone2", "req", "Please enter your home phone number");
+                     frmvalidator.addValidation("phone2", "num", "Please use only numeric characters for phone number");
+                     frmvalidator.addValidation("phone2", "minlen=3", "Please enter your home phone number");
+                     frmvalidator.addValidation("phone3", "req", "Please enter your home phone number");
+                     frmvalidator.addValidation("phone3", "num", "Please use only numeric characters for phone number");
+                     frmvalidator.addValidation("phone3", "minlen=4", "Please enter your home phone number");
+                     
+                     frmvalidator.addValidation("fax1", "num", "Please use only numeric characters for phone number");
+                     frmvalidator.addValidation("fax2", "num", "Please use only numeric characters for phone number");
+                     frmvalidator.addValidation("fax3", "num", "Please use only numeric characters for phone number");
+                     
+                     frmvalidator.addValidation("email", "req", "Please enter your email address");
+                     frmvalidator.addValidation("email", "email", "Please enter a valid email address");
+                     
+                     frmvalidator.addValidation("info", "req", "Please enter a message");
+                     frmvalidator.addValidation("info", "maxlen=2000", "Please keep message under 2000 characters");
+                     </script>
+                </div>
+            </div>
+        </div>
+    <!-- End Main Content -->
+    </div>
+<!-- End Main Content and Sidebar -->
+
+<!-- Footer -->
+    <footer class="row">
+        <div class="large-12 columns">
+        <hr /><br />
+            <div class="row">
+                <div class="large-12 columns" align="center">
+                    <strong>Paid for by the Committee to Re-elect Judge Carolyn Ellsworth</strong><br /><br />
+                    <p>P.O. Drawer 2070,<br />
+                    Las Vegas, NV 89125-2070</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-6 columns">
+                </div>
+                <div class="large-6 columns">
+                    <ul class="inline-list right">
+                        <li><a href="#top">Back to Top</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+</html>
