@@ -42,9 +42,17 @@
         <div class="large-9 columns" role="content">
             <div class="row">
                 <div class="large-12 columns">
-                    <p>
-                        Thank you for your time, we will contact you as soon as possible.
-                    </p>
+                	<?php
+                    $qsMsg = $_GET["msg"];
+                    if($qsMsg=="success"){
+                    	echo "<p>Thank you for your time, we will contact you as soon as possible.</p>";
+                    }else{
+                    	echo "<p>There was a problem sending you message. Please try again at a later time.</p>";
+                    }
+                    if(strtolower($_GET["debug"]) == "t"){
+                    	echo $qsMsg;
+                    }
+                    ?>
                 </div>
             </div>
         </div>

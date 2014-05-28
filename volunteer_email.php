@@ -1,4 +1,17 @@
 <?PHP
+require_once 'Mail.php';
+
+function handleCheckBoxes($value){
+	$retval = "N";	
+		
+	if($value){
+		$retval = "Y";
+	}
+	
+	return $retval;
+}
+
+
 $errors = '';
 $myemail = 'white.rabbit.44@gmail.com';
 if(empty($_POST['name'])  || 
@@ -28,19 +41,20 @@ $wphone2 = $_POST['wphone2'];
 $wphone3 = $_POST['wphone3'];
 $email_add = $_POST['email'];
 $message = $_POST['info'];
-$host = $_POST['host'];
-$sign = $_POST['sign'];
-$other = $_POST['other'];
+$host = handleCheckBoxes($_POST['host']);
+$sign = handleCheckBoxes($_POST['sign']);
+$other = handleCheckBoxes($_POST['other']);
 $othertext = $_POST['othertext'];
 
-if (!preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/i", $email_address))
+if (!preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/i", $email_add))
 {
     $errors .= "\n Error: Invalid email address";
 }
 
 if( empty($errors))
 {
-    $to = $myemail;
+	$host = "relay-hosting.secureserver.net";
+	$port = 25;
     $email_subject = "Volunteer form submission: $name";
     $email_body = "You have received a volunteer request from your website. ".
             " Here are the details: \n Name: $name \n ".
@@ -50,9 +64,24 @@ if( empty($errors))
             " Email: $emailadd\n Message: $message\n ".
             " Signed up for host: $host\n Signed up for sign: $sign\n ".
             " Signed up for other: $other\n Other: $othertext";
-    $headers = "From: $myemail\n";
-    $headers .= "Reply-To: $email_add";
-    mail($to,$email_subject,$email_body,$headers);
-    header('Location: thank_form.html');
+
+	$headers = array ('From' => $email_add, 'To' => $myemail, 'Subject' => $email_subject);
+	
+	$uName = "";
+	$pwd = "";
+	
+	$smtp Mail::factory('smtp', array ('host' => $host, 'port' => $port, 'auth' => true, 'username' => @uName, 'password' => $pwd));
+	
+	$mail = $smtp=>send($to, $headers, $email_body);
+	
+    //mail($to,$email_subject,$email_body,$headers);
+    
+    if(PEAR::isError($mail)){
+    	$msg = $mail=>getMessage();
+    }else{
+    	$msg = "success";
+    }
+
+    header('Location: thank_form.php?msg='.$msg);
 }
 ?>
