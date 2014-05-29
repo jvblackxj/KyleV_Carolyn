@@ -1,7 +1,5 @@
 <?php 
 
-require_once('PEAR.php');
-
 function handleCheckBoxes($value){
 	$retval = "N";	
 		
@@ -12,27 +10,30 @@ function handleCheckBoxes($value){
 	return $retval;
 }
 
+require_once "Mail.php";
+require_once "PEAR.php";
+
 $errors = "Error: <br /><ul>";
 
 $myemail = 'white.rabbit.44@gmail.com';
 
-$name = $_POST['name'];
-$address = $_POST['address'];
-$city = $_POST['city'];
-$state = $_POST['state'];
-$zip = $_POST['zip'];
-$hphone1 = $_POST['hphone1'];
-$hphone2 = $_POST['hphone2'];
-$hphone3 = $_POST['hphone3'];
-$wphone1 = $_POST['wphone1'];
-$wphone2 = $_POST['wphone2'];
-$wphone3 = $_POST['wphone3'];
-$email_add = $_POST['email'];
-$message = $_POST['info'];
-$host = handleCheckBoxes($_POST['host']);
-$sign = handleCheckBoxes($_POST['sign']);
-$other = handleCheckBoxes($_POST['other']);
-$othertext = $_POST['othertext'];
+$name = "JasonV";
+$address = "123 Main";
+$city = "SLC";
+$state = "UT";
+$zip = "84014";
+$hphone1 = "801";
+$hphone2 = "821";
+$hphone3 = "1485";
+$wphone1 = null;
+$wphone2 = null;
+$wphone3 = null;
+$email_add = "jvblackxj@gmail.com";
+$message = "sup?";
+$host = handleCheckBoxes(true);
+$sign = handleCheckBoxes(true);
+$other = handleCheckBoxes(false);
+$othertext = "But is it really false?";
 
 if(empty($name)  || 
    empty($address) || 
@@ -55,8 +56,8 @@ if (!preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]
 
 if(strlen($errors)==17)
 {
-    $host = "mail.judgecarolynellsworth.com";
-    $port = 25;
+    $host = "ssl://smtp.gmail.com";
+    $port = 465;
     $email_subject = "Volunteer form submission: $name";
     $email_body = "You have received a volunteer request from your website. ".
             " Here are the details: \n Name: $name \n ".
@@ -69,12 +70,10 @@ if(strlen($errors)==17)
 
     $headers = array ('From' => $email_add, 'To' => $myemail, 'Subject' => $email_subject);
 	
-    $uName = "auto@judgecarolynellsworth.com";
-    $pwd = "jcemail";
-    
-    include('Mail.php');
+    $uName = $myemail;
+    $pwd = "";
 
-    $smtp =& Mail::factory('smtp', array ('host' => $host, 
+    $smtp =& Mail::factory('mail', array ('host' => $host, 
     					  'port' => $port, 
     					  'auth' => true, 
     					  'username' => $uName, 
@@ -84,6 +83,7 @@ if(strlen($errors)==17)
     					  'localhost' => $host
     					  )
     			  );
+    if(PEAR::isError($smtp){ echo $smtp->getMessage(); }
     			  
     $mail = $smtp->send($to, $headers, $email_body);
 
@@ -95,8 +95,6 @@ if(strlen($errors)==17)
     
     echo $msg;
     //header('Location: thank_form.php?msg='.$msg);
-    
-    
 }
 
 if(strlen($errors) > 17){
